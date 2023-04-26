@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 # Documentação selenium para Python: https://selenium-python.readthedocs.io/
+# Exemplos: https://ordinarycoders.com/blog/article/testing-django-selenium
 
 # Create your tests here.
 class TestHome(LiveServerTestCase):
