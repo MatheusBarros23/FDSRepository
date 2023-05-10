@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="020ae9e4-f70a-4e91-ad8d-cd275bc21965" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/django.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/django.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +219,7 @@
       <workItem from="1681679085277" duration="4046000" />
       <workItem from="1681687759522" duration="2672000" />
       <workItem from="1681745486315" duration="8185000" />
-      <workItem from="1683736338200" duration="1373000" />
+      <workItem from="1683736338200" duration="1788000" />
     </task>
     <servers />
   </component>
