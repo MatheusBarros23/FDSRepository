@@ -8,13 +8,15 @@ from selenium.webdriver.common.by import By
 # Create your tests here.
 
 class TestHome(LiveServerTestCase):
-    browser = webdriver.Chrome()
-
     def test_title(self):
-        self.browser.get('http://127.0.0.1:8000/')
-        assert "The install worked" in self.browser.title
+        browser = webdriver.Chrome()
+        browser.get('http://127.0.0.1:8000/')
+        assert "The install worked" in browser.title
+        browser.quit()
 
     def test_href(self):
-        self.browser.get('http://127.0.0.1:8000/')
-        link = self.browser.find_element(By.CLASS_NAME, 'logo')
+        browser = webdriver.Chrome()
+        browser.get('http://127.0.0.1:8000/')
+        link = browser.find_element(By.CLASS_NAME, 'logo')
         assert link.get_attribute('href') == 'https://www.djangoproject.com/'
+        browser.quit()
