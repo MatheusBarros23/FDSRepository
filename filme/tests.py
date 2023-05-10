@@ -4,20 +4,13 @@ from selenium.webdriver.common.by import By
 
 from selenium.webdriver.chrome.options import Options
 
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
-
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
-
-# Create your tests here.
 class TestHome(LiveServerTestCase):
-    driver = webdriver.Chrome(options=chrome_options)
-    def test_title(self):
-        self.driver.get('http://127.0.0.1:8000/')
-        assert "The install worked" in self.browser.title
-
-    def test_href(self):
-        self.driver.get('http://127.0.0.1:8000/')
-        link = self.driver.find_element(By.CLASS_NAME, 'logo')
-        assert link.get_attribute('href') == 'https://www.djangoproject.com/'
+    self.driver.get('http://127.0.0.1:8000/')
+    assert "The install worked" in self.browser.title
+def test_href(self):
+    self.driver.get('http://127.0.0.1:8000/')
+    link = self.driver.find_element(By.CLASS_NAME, 'logo')
+    assert link.get_attribute('href') == 'https://www.djangoproject.com/'
