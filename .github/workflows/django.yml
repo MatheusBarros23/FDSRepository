@@ -3,7 +3,7 @@ name: Create GitHub Action
 on:
   push:
     branches:
-      - your_branch_name
+      - main
  
 jobs:
   pre_deploy_tests:
