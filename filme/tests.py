@@ -16,7 +16,7 @@ browser = webdriver.Chrome(options=chrome_options)
 
 class TestHome(LiveServerTestCase):
     def test_title(self):
-        browser.get('127.0.0.1:8000')
+        browser.get('http://127.0.0.1:8000/')
         assert "The install worked" in browser.title
 
     def test_href(self):
