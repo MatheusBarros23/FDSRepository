@@ -1,37 +1,38 @@
-name: Create GitHub Action
- 
+name: Django CI
+
 on:
   push:
-    branches:
-      - main
-      
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
-  pre_deploy_tests:
- 
+  build:
+
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
-      max-parallel: 5
+      max-parallel: 4
       matrix:
-        python-version: [3.11] 
- 
+        python-version: [3.11]
+
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+    - name: Install Dependencies
       run: |
         set -ex
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        sudo apt install ./google-chrome-stable_current_amd64.deb        
+        sudo apt install ./google-chrome-stable_current_amd64.deb
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install msedge-selenium-tools
-    - uses: nanasess/setup-chromedriver@v1
-    - run: chromedriver --url-base=/wd/hub &        
-    - name: Run local server
+    - uses: nanasess/setup-chromedriver@v2
+    - run: |
+        chromedriver --url-base=/wd/hub &
+    - name: Run local Server
       run: |
         python manage.py runserver &
         sleep 5
