@@ -33,7 +33,6 @@ jobs:
     - run: chromedriver --url-base=/wd/hub &        
     - name: Run local server
       run: |
-        cd html/
         python run_server.py &
         sleep 5
         cd ..
