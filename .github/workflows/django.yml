@@ -29,5 +29,5 @@ jobs:
       run: |
          chromedriver --version 
          google-chrome --version
-         python manage.py runserver
-         python manage.py test
+         #python manage.py runserver
+         python manage.py test --browser headless-chrome
