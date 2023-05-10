@@ -2,15 +2,19 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from selenium.webdriver.chrome.options import Options
+# Documentação selenium para Python: https://selenium-python.readthedocs.io/
+# Exemplos: https://ordinarycoders.com/blog/article/testing-django-selenium
 
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-driver = webdriver.Chrome(options=chrome_options)
+# Create your tests here.
+
 class TestHome(LiveServerTestCase):
-    self.driver.get('http://127.0.0.1:8000/')
-    assert "The install worked" in self.browser.title
-def test_href(self):
-    self.driver.get('http://127.0.0.1:8000/')
-    link = self.driver.find_element(By.CLASS_NAME, 'logo')
-    assert link.get_attribute('href') == 'https://www.djangoproject.com/'
+    browser = webdriver.Chrome()
+
+    def test_title(self):
+        self.browser.get('http://127.0.0.1:8000/')
+        assert "The install worked" in self.browser.title
+
+    def test_href(self):
+        self.browser.get('http://127.0.0.1:8000/')
+        link = self.browser.find_element(By.CLASS_NAME, 'logo')
+        assert link.get_attribute('href') == 'https://www.djangoproject.com/'
