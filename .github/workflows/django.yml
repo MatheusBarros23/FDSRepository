@@ -28,4 +28,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python manage.py test
+         chromedriver --version 
+         google-chrome --version
+         python manage.py test
