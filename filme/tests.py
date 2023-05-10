@@ -16,5 +16,4 @@ class TestHome(LiveServerTestCase):
     def test_href(self):
         self.browser.get('http://127.0.0.1:8000/')
         link = self.browser.find_element(By.CLASS_NAME, 'logo')
-
         assert link.get_attribute('href') == 'https://www.djangoproject.com/'
