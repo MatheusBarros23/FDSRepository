@@ -10,7 +10,7 @@ driver = webdriver.Chrome(options=chrome_options)
 
 # Create your tests here.
 class TestHome(LiveServerTestCase):
-
+    driver = webdriver.Chrome(options=chrome_options)
     def test_title(self):
         self.driver.get('http://127.0.0.1:8000/')
         assert "The install worked" in self.browser.title
