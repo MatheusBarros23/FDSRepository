@@ -33,8 +33,6 @@ jobs:
     - run: chromedriver --url-base=/wd/hub &        
     - name: Run local server
       run: |
-        python run_server.py &
+        python manage.py runserver &
         sleep 5
-        cd ..
-        pip install -r tests/Requirements.txt
-        python -m pytest -U http://localhost:port/ --browser headless-chrome
+        python manage.py test
