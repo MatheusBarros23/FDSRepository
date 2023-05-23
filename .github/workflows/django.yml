@@ -48,5 +48,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: FDS-Deploy
         environment_name: FDS-Deploy-env
+        version_label: 1234
         region: us-east-1
         deployment_package: deploy.zip
