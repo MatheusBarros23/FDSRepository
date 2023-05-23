@@ -1,14 +1,14 @@
-name: Django CI
+name: Django CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "release" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "release" ]
 
 jobs:
   build:
-
+  
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -37,3 +37,17 @@ jobs:
         python manage.py runserver &
         sleep 5
         python manage.py test
+    - uses: actions/checkout@v2
+    - name: Django EB Deploy
+      uses: joel-hanson/django-aws-eb-deploy@V1.1
+      with:
+        python_version: ${{ matrix.python_version }}
+        flake8: true
+        aws_access_key_id: ${{ secrets.aws_access_key_id }}
+        aws_secret_access_key: ${{ secrets.aws_secret_access_key }}
+        django_path: sample_project
+        unit_testing: false
+        deploy: true
+        min_coverage: 10
+        security_check: false
+    
