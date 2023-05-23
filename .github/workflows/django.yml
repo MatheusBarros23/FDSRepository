@@ -37,12 +37,17 @@ jobs:
         python manage.py runserver &
         sleep 5
         python manage.py test
-    - name: AWS Elastic beanstalk django deployment
-      uses: Joel-hanson/django-aws-eb-deploy@V1.2
+    
+    - name: Generate deployment package
+      run: zip -r deploy.zip . -x '*.git*'
+
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v21
       with:
-        python_version: ${{ matrix.python_version }}
-        aws_access_key_id: ${{ secrets.aws_access_key_id }}
-        aws_secret_access_key: ${{ secrets.aws_secret_access_key }}
-        django_path: sample_project
-        deploy: true
-        min_coverage: 10    
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: FDS-Deploy
+        environment_name: FDS-Deploy-env
+        version_label: 12345
+        region: us-east-1
+        deployment_package: deploy.zip
