@@ -37,7 +37,6 @@ jobs:
         python manage.py runserver &
         sleep 5
         python manage.py test
-    - uses: actions/checkout@v2
     - name: AWS Elastic beanstalk django deployment
       uses: Joel-hanson/django-aws-eb-deploy@V1.2
       with:
