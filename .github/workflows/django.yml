@@ -38,8 +38,8 @@ jobs:
         sleep 5
         python manage.py test
     - uses: actions/checkout@v2
-    - name: Django EB Deploy
-      uses: joel-hanson/django-aws-eb-deploy@V1.1
+    - name: AWS Elastic beanstalk django deployment
+      uses: Joel-hanson/django-aws-eb-deploy@V1.2
       with:
         python_version: ${{ matrix.python_version }}
         aws_access_key_id: ${{ secrets.aws_access_key_id }}
