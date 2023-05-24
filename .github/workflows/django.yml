@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "release" ]
 
+env:
+    commit_id: ${GITHUB_SHA}
+    
 jobs:
   build:
   
@@ -41,9 +44,7 @@ jobs:
     - name: Generate deployment package
       run: | 
         zip -r deploy.zip . -x '*.git*'
-        commit_id = ${GITHUB_SHA}     
-  
-
+ 
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v21
       with:
@@ -51,6 +52,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: FDS-CICD
         environment_name: FDS-CICD-env
-        version_label: ${{ commit_id }}
+        version_label: ${{ env.commit_id }}
         region: us-east-1
         deployment_package: deploy.zip
