@@ -1,14 +1,14 @@
-name: Django CI/CD
+name: Django CI
 
 on:
   push:
     branches: [ "release" ]
   pull_request:
     branches: [ "release" ]
-    
+
 jobs:
   build:
-  
+
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -37,18 +37,17 @@ jobs:
         python manage.py runserver &
         sleep 5
         python manage.py test
-    
+        
     - name: Generate deployment package
-      run: | 
-        zip -r deploy.zip . -x '*.git*'
- 
+      run: zip -r deploy.zip . -x '*.git*'
+
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v21
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: FDS-CICD
+        application_name: FDS-CICD 
         environment_name: FDS-CICD-env
         version_label: ${{ github.sha }}
         region: us-east-1
-        deployment_package: deploy.zip
+        deployment_package: deploy.zip    
