@@ -11,7 +11,6 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-gpu")
 browser = webdriver.Chrome(options=chrome_options)
 
-
 # Create your tests here.
 
 class TestHome(LiveServerTestCase):
