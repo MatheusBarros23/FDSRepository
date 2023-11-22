@@ -12,7 +12,6 @@ chrome_options.add_argument("--disable-gpu")
 browser = webdriver.Chrome(options=chrome_options)
 
 # Create your tests here.
-
 class TestHome(LiveServerTestCase):
     def test_title(self):
         browser.get('http://127.0.0.1:8000/')
